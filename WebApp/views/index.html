@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+ <title>MicroServicesApp</title>
+
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+ <style>
+   .col-container {
+    display: table; /* Make the container element behave like a table */
+    width: 100%; /* Set full-width to expand the whole page */
+}
+
+.col {
+    display: table-cell; /* Make elements inside the container behave like table cells */
+}
+ </style>
+
+</head>
+
+
+
+<body>
+
+  <div class="jumbotron text-center">
+    <h1>MRC MICROSERVICES</h1>
+    <p>A simple microservice app based on NodeJS, Express, Inginx, MongoCloud</p> 
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4" onclick="window.location.href = 'http://localhost:3000/customers';">
+        <h2>Customers</h2>
+        <p>All the existing customers can be viewed. New users can login and create feed in the info. Simply click this </p>
+      </div>
+      <div class="col-sm-4" onclick="window.location.href = 'http://localhost:3000/books';">
+        <h2>Books</h2>
+        <p>All the existing books can be viewed. New books can be fed in to the database. Simply click this </p>
+      </div>
+      <div class="col-sm-4" onclick="window.location.href = 'http://localhost:3000/orders';">
+        <h2>Orders</h2>
+        <p>All the existing orders can be viewed. New orders can be fed in to the database. Simply click this </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+</html>

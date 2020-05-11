@@ -1,0 +1,119 @@
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <style>
+            
+            .container1{
+              
+                margin-top:50px;
+                
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+           
+         
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:3000/books">List Books</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:3000">Home</a>
+                </li>   
+              </ul>
+            </div>  
+          </nav>
+
+        <div class="container" >
+            <div class="container1">
+
+            <h2>Create a Book</h2>
+              
+
+        <form class="was-validated" id="myform" onsubmit="postData()">
+            <div class="form-group">
+              <label for="uname">Title:</label>
+              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+                <label for="uname">Author:</label>
+                <input type="text" class="form-control" id="author" placeholder="Enter author" name="author" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="uname">No of Pages:</label>
+                <input type="number" class="form-control" id="nopages" placeholder="Enter no of pages" name="nopages" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="uname">Publisher:</label>
+                <input type="text" class="form-control" id="publisher" placeholder="Enter publisher" name="publisher" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+              </div>
+          
+            <div class="form-group form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="remember" required> I agree on all terms.
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Check this checkbox to continue.</div>
+              </label>
+            </div>
+           <!--  <button type="button" class="btn btn-primary" id="submit" onclick="postData()">Submit</button> -->
+           <input type="submit" value="Submit" >
+          
+          </form>
+        </div>
+
+        </div>
+
+        <script>
+        function postData() {
+          const form = document.getElementById('myform');
+            const title = form.title.value;
+            const author= form.author.value;
+            const nopages = form.nopages.value;
+            const publisher = form.publisher.value;
+
+
+             fetch('http://localhost:4545/book', {headers: {'Accept': 'application/json',
+                 'Content-Type': 'application/json'},method: 'POST',mode: 'cors', body: JSON.stringify({title:title,author:author,nopages:nopages,publisher:publisher})}).then(response => {
+                if (response.ok){
+                  window.location.href = "http://localhost:3000/books";
+                 //throw new Error('Network response was not ok.');
+                }
+             }).catch((err) => {
+                	console.log(err);
+             });
+
+            
+        }
+     
+        </script>
+
+    </body>
+</html>
+
+

@@ -1,0 +1,9 @@
+FROM node:7
+RUN mkdir -p /src/app
+WORKDIR /src/app    
+COPY package.json /src/app/package.json
+RUN npm install 
+COPY .  /src/app
+EXPOSE 4545
+
+CMD ["node", "books.js"]

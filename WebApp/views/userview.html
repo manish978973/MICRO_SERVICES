@@ -1,0 +1,86 @@
+<html>
+    <head>
+         <title>UserPage</title>
+
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>      
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+           
+         
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:3000/newuser">Feed</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:3000">Home</a>
+                </li>   
+              </ul>
+            </div>  
+          </nav>
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <div class="container">
+            <h2>List of Users</h2>
+            <p>The table shows the fed in users:</p>            
+            <table class="table table-dark table-hover">
+              <thead>
+                  
+                <tr>
+                  <th>Userid</th>
+                  <th>Firstname</th>
+                  <th>Age</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+          <!--      <tr>
+                  <td>John</td> 
+                </tr> -->
+              </tbody>
+            </div>
+            </table>
+
+
+            <script>
+
+fetch("http://localhost:5555/customers").then(resp => resp.json())
+    .then(results=>{
+
+        const htmlelementparent = document.getElementById('tbody');
+
+        console.log(results)
+        results.forEach(element => {
+            console.log(element.title)
+            const li = document.createElement("tr");
+
+            const html = `
+             <td>${element._id}</td>
+             <td>${element.name}</td>
+             <td>${element.age}</td>
+             <td>${element.address}</td>
+            `
+            li.innerHTML = html;
+            htmlelementparent.insertAdjacentElement('afterbegin', li)
+           
+
+        });
+
+    })
+
+            </script>
+    </body>
+</html>
